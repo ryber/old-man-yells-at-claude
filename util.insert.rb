@@ -20,4 +20,5 @@ if insertAfter < lastPageNumber
         File.rename(toFileName(page), toFileName(newPageNumber))
         puts "...done"
     }
+    File.write(toFileName(insertAfter + 1), "<h1>OLD MAN YELLS AT CLAUDE</h1>")
 end
