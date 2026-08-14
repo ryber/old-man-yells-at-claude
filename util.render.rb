@@ -1,44 +1,20 @@
 #!/usr/bin/env ruby
 require "digest"
-
-def pageNumber(page)
-    return page.gsub(".html", "").to_i
-end
-
-def allPages 
-    all = []
-
-    Dir.each_child(".").sort_by(&:downcase).each do | filename |
-        if filename.end_with?("html")
-            all << filename
-        end
-    end
-
-    return all
-end
-
-def pageFile(number)
-    if number < 10
-        return "0" + number.to_s + ".html"
-    else
-        return number.to_s + ".html"
-    end
-end
-
+require "./util"
 
 def fixLinks(filename, content, last)
     finalString = content
-    pageNumber = filename.gsub(".html", "").to_i
+    pageNumber = toPageNumber(filename)
     if (filename != last)
         nextPage = pageNumber + 1
-        finalString = finalString.gsub("Next &gt;", "<a href=\"" + pageFile(nextPage) + "\">Next</a>")
+        finalString = finalString.gsub("Next &gt;", "<a href=\"" + toFileName(nextPage) + "\">Next</a>")
     else
         finalString = finalString.gsub("Next &gt;", "")
     end
 
     if pageNumber != 1
         previousPage = pageNumber -1
-        finalString = finalString.gsub("Previous &lt;", "<a href=\"" + pageFile(previousPage) + "\">Previous</a>")
+        finalString = finalString.gsub("Previous &lt;", "<a href=\"" + toFileName(previousPage) + "\">Previous</a>")
     else
         finalString = finalString.gsub("Previous &lt;", "")
     end    
