@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require "digest"
-require "./util"
+require_relative "util"
 
 def fixLinks(filename, content, last)
     finalString = content
@@ -22,7 +22,7 @@ def fixLinks(filename, content, last)
     return finalString
 end    
 
-def render
+def build
     header = File.read("./includes/header.html")
     footer = File.read("./includes/footer.html")
     all = allPages()
@@ -44,7 +44,7 @@ def state(dir)
 end
 
 
-def monitor()
+def monitor
     target = "."
 
     last_state = state(target)
@@ -62,7 +62,3 @@ def monitor()
         sleep 2
     end
 end
-
-render()
-monitor()
-
