@@ -1,5 +1,6 @@
 require "optparse"
-require_relative "lib/util.render"
+require_relative "lib/util.build"
+require_relative "lib/util.insert"
 
 options = {}
 OptionParser.new do |opts|
@@ -24,6 +25,11 @@ end
 
 if options[:monitor]
   monitor()
+end
+
+if options[:insert] > 0
+  insertAt(options[:insert])
+  build()
 end
 
 
