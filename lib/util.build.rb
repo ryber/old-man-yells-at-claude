@@ -54,9 +54,10 @@ def monitor
         current_state = state(target)
 
         if current_state != last_state
-            puts "Change detected."
-            render()
+            puts "Change detected. " + Time.now.to_s
+            build()
             last_state = current_state
+            puts "done"
         end
 
         sleep 2
