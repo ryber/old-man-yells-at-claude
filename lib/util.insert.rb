@@ -10,7 +10,7 @@ def insertAt(insertAfter)
     if insertAfter < lastPageNumber
         puts "inserting page in the middle. Shifting pages"
 
-        lastPageNumber.downto(insertAfter + 1).each {
+        lastPageNumber.downTo(insertAfter + 1).each {
             |page| 
             newPageNumber = page + 1
             print "moving #{page} to #{newPageNumber}" 

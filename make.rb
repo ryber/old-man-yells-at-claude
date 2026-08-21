@@ -1,12 +1,17 @@
 require "optparse"
 require_relative "lib/util.build"
 require_relative "lib/util.insert"
+require_relative "lib/util.remove"
 
 options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "\nRybers Deck Builder\n"
   opts.on("-i position", "--insert position", Integer, "Insert a new slide at this position") do |n|
       options[:insert] = n
+  end
+
+  opts.on("-r position", "--remove position", Integer, "Remove the slide at the position and collapse the rest of the deck") do |n|
+      options[:remove] = n
   end
 
   opts.on("-m", "--monitor", "Start a new monitor process that will watch the current directory and rebuild on changes") do
@@ -34,5 +39,8 @@ if options[:insert]&. > 0
   build()
 end
 
-
+if options[:remove]&. > 0
+  removeAt(options[:remove])
+  build()
+end
 
