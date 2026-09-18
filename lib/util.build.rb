@@ -25,6 +25,7 @@ end
 def build
     header = File.read("./includes/header.html")
     footer = File.read("./includes/footer.html")
+    Dir.mkdir("deck") unless Dir.exist?("deck")
     all = allPages()
     last = all.last
     allPages().each do | filename |

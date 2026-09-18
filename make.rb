@@ -21,6 +21,10 @@ parser = OptionParser.new do |opts|
   opts.on("-b", "--build", "Build the deck") do
       options[:build] = true
   end
+  
+  opts.on("-o", "--open", "Open the deck in a browser") do
+  		
+  end
 end
 
 parser.parse!
