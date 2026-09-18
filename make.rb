@@ -23,7 +23,7 @@ parser = OptionParser.new do |opts|
   end
   
   opts.on("-o", "--open", "Open the deck in a browser") do
-  		
+  		system("open", "./deck/01.html")
   end
 end
 
