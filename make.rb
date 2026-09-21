@@ -25,6 +25,10 @@ parser = OptionParser.new do |opts|
   opts.on("-o", "--open", "Open the deck in a browser") do
   		system("open", "./deck/01.html")
   end
+  
+  opts.on("-a", "--add", "Adds a new page at the end") do
+  		insertLast()
+  end
 end
 
 parser.parse!

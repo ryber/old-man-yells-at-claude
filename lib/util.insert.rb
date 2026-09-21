@@ -22,3 +22,7 @@ def insertAt(insertAfter)
     puts "Creating new file at #{newFile}"
     File.write(toFileName(newFile), "<h1>OLD MAN YELLS AT CLAUDE</h1>")
 end
+
+def insertLast()
+	insertAt(lastPageNumber())
+end
