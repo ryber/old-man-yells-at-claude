@@ -32,8 +32,11 @@ def build
         rendered = header + File.read(filename) + footer
         content = fixLinks(filename, rendered, last)
         File.write("deck/"+filename, content)
-        puts "done "  + filename
+        
+        title = getTitle(content)
+        puts "done #{filename} #{title}"
     end
+    buildIndex()
 end
 
 def state(dir)
@@ -63,4 +66,30 @@ def monitor
 
         sleep 2
     end
+end
+
+def getTitle(content)
+	if (match = content.match(%r{<h1\b[^>]*>(.*?)</h1>}m))
+  		content = match[1]
+  		return content
+	end
+	
+	return " unknown "
+end
+
+def buildIndex
+	all = allPages()
+	body = "<ol>"
+	allPages().each do | filename |
+		page = File.read(filename)
+        title = getTitle(page)
+        body << "<li><a href=\"#{filename} \">#{filename} (#{title})<//a><//li>"
+    end
+    
+    header = File.read("./includes/header.html")
+    footer = File.read("./includes/footer.html")
+    
+    File.write("deck/index.html", header << body << "</ol>" << footer)
+    puts "done index"
+	
 end
