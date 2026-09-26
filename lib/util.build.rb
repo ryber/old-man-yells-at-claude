@@ -34,7 +34,7 @@ def build
         File.write("deck/"+filename, content)
         
         title = getTitle(content)
-        puts "done #{filename} #{title}"
+        log("done #{filename} #{title}")
     end
     buildIndex()
 end
@@ -52,16 +52,16 @@ def monitor
     target = "."
 
     last_state = state(target)
-    puts "Watching directory: #{target}"
+    log("Watching directory: #{target}")
 
     loop do
         current_state = state(target)
 
         if current_state != last_state
-            puts "Change detected. " + Time.now.to_s
+            ("Change detected. ")
             build()
             last_state = current_state
-            puts "done"
+            log("done")
         end
 
         sleep 2
@@ -90,6 +90,6 @@ def buildIndex
     footer = File.read("./includes/footer.html")
     
     File.write("deck/index.html", header << body << "</ol>" << footer)
-    puts "done index"
+    log("done index")
 	
 end

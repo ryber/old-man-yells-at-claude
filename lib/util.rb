@@ -30,3 +30,7 @@ end
 def number?(str)
   return !Integer(str, exception: false).nil? 
 end
+
+def log(str)
+	puts "[#{Time.now.strftime('%H:%M:%S')}] #{str}"
+end	
