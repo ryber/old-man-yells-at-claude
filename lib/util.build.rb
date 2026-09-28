@@ -7,14 +7,16 @@ def fixLinks(filename, content, last)
     pageNumber = toPageNumber(filename)
     if (filename != last)
         nextPage = pageNumber + 1
-        finalString = finalString.gsub("Next &gt;", "<a href=\"" + toFileName(nextPage) + "\" autofocus>Next</a>")
+        fileName = toFileName(nextPage)
+        finalString = finalString.gsub("Next &gt;", "<a href=\"#{fileName}\" autofocus>Next</a>")
     else
         finalString = finalString.gsub("Next &gt;", "")
     end
 
     if pageNumber != 1
         previousPage = pageNumber -1
-        finalString = finalString.gsub("Previous &lt;", "<a href=\"" + toFileName(previousPage) + "\">Previous</a>")
+        fileName = toFileName(previousPage)
+        finalString = finalString.gsub("Previous &lt;", "<a href=\"#{fileName}\">Previous</a>")
     else
         finalString = finalString.gsub("Previous &lt;", "")
     end    
