@@ -33,7 +33,7 @@ parser = OptionParser.new do |opts|
   		insertLast()
   end
   
-opts.on("-o", "--open", "Open the deck in a browser") do
+  opts.on("-o", "--open", "Open the deck in a browser") do
   		system("open", "./deck/index.html")
   end
 end
