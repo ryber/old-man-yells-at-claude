@@ -1,7 +1,7 @@
 require "optparse"
-require_relative "lib/util.build"
-require_relative "lib/util.insert"
-require_relative "lib/util.remove"
+require_relative "util.build"
+require_relative "util.insert"
+require_relative "util.remove"
 
 
 parser = OptionParser.new do |opts|
