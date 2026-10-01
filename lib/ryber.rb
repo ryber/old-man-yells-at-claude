@@ -2,6 +2,7 @@ require "optparse"
 require_relative "ryber.build"
 require_relative "ryber.insert"
 require_relative "ryber.remove"
+require_relative "ryber.stash"
 
 
 parser = OptionParser.new do |opts|
@@ -35,6 +36,10 @@ parser = OptionParser.new do |opts|
   
   opts.on("-o", "--open", "Open the deck in a browser") do
   		system("open", "./deck/index.html")
+  end
+  
+  opts.on("-s", "--stash", "move a file to the stash") do |n|
+  		stash(n)
   end
 end
 
