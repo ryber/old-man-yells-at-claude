@@ -21,6 +21,12 @@ parser = OptionParser.new do |opts|
 		build()
 	end
   end
+  
+  opts.on("-s position", "--stash position", Integer, "move a file to the stash") do |position|
+	if position > 0
+		stash(position)
+	end
+  end
 
   opts.on("-m", "--monitor", "Start a new monitor process that will watch the current directory and rebuild on changes") do
   	monitor()
@@ -36,10 +42,6 @@ parser = OptionParser.new do |opts|
   
   opts.on("-o", "--open", "Open the deck in a browser") do
   		system("open", "./deck/index.html")
-  end
-  
-  opts.on("-s", "--stash", "move a file to the stash") do |n|
-  		stash(n)
   end
 end
 

@@ -1,8 +1,11 @@
 require_relative "ryber.util"
-
+require 'fileutils' 
 
 def stash(number)
-	mvFile(toFileName(number))
+    puts "moving " << number
+	fullname = toFileName(number)
+	puts "moving " << fullname
+	mvFile(fullname)
 end
 
 def mvFile(fileName)
