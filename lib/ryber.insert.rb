@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative "util"
+require_relative "ryber.util"
 
 def insertAt(insertAfter)
     lastPageNumber = lastPageNumber()

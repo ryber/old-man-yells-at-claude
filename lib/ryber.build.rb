@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require "digest"
-require_relative "util"
+require_relative "ryber.util"
 
 def fixLinks(filename, content, last)
     finalString = content
