@@ -3,13 +3,18 @@ require 'fileutils'
 
 def stash(number)
 	filename = toFileName(number)
-	newName = getTitle(File.read(filename))
+	newName = getNewFileName(filename)
 	puts "moving #{filename} to #{newName}" 
-	mvFile(filename)
+	mvFile(filename, newName)
 end
 
-def mvFile(fileName)
-	target_dir = 'stash'
-	FileUtils.mkdir_p(target_dir)
-	FileUtils.cp(fileName, target_dir)
+def mvFile(fileName, newName)
+	FileUtils.mkdir_p("stash")
+	FileUtils.cp(fileName, "stash/#{newName}")
+end
+
+
+def getNewFileName(filename)
+	title = getTitle(File.read(filename))
+	return title.gsub(" ", "_") << ".html"
 end
