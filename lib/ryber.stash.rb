@@ -2,10 +2,10 @@ require_relative "ryber.util"
 require 'fileutils' 
 
 def stash(number)
-    puts "moving " << number
-	fullname = toFileName(number)
-	puts "moving " << fullname
-	mvFile(fullname)
+	filename = toFileName(number)
+	newName = getTitle(File.read(filename))
+	puts "moving #{filename} to #{newName}" 
+	mvFile(filename)
 end
 
 def mvFile(fileName)

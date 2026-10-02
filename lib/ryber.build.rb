@@ -70,15 +70,6 @@ def monitor
     end
 end
 
-def getTitle(content)
-	if (match = content.match(%r{<h1\b[^>]*>(.*?)</h1>}m))
-  		content = match[1]
-  		return content
-	end
-	
-	return " unknown "
-end
-
 def buildIndex
 	all = allPages()
 	body = "<ol>"
