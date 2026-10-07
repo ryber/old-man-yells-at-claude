@@ -21,7 +21,7 @@ def fixLinks(filename, content, last)
         finalString = finalString.gsub("Previous &lt;", "")
     end    
 
-    return finalString
+    return finalString.gsub("NO", pageNumber.to_s)
 end    
 
 def build
