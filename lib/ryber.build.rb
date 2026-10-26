@@ -86,3 +86,8 @@ def buildIndex
     log("done index")
 	
 end
+
+def clean
+	FileUtils.rm_rf("./deck")
+	log("clean complete")
+end

@@ -43,6 +43,10 @@ parser = OptionParser.new do |opts|
   opts.on("-o", "--open", "Open the deck in a browser") do
   		system("open", "./deck/index.html")
   end
+  
+  opts.on("-c", "--clean", "Cleans the output directory") do
+  		clean()
+  end
 end
 
 parser.parse!
