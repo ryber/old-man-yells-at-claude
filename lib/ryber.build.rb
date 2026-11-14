@@ -38,6 +38,8 @@ def build
         title = getTitle(content)
         log("done #{filename} #{title}")
     end
+    FileUtils.cp_r('img', 'deck/img')
+    log("copied images")
     buildIndex()
 end
 
